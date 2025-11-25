@@ -1,0 +1,6 @@
+services:
+  - type: worker
+    name: telegram-bot-forwarder
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python telegram_bot_forwarder.py"
