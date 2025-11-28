@@ -49,7 +49,18 @@ def refe_handler(message: types.Message):
 
     success = safe_forward(message.reply_to_message)
     bot.reply_to(message, "✅ Refe enviada" if success else "✅ Refe enviada")
-
+# ========== test /test ==========
+@bot.message_handler(commands=['test'])
+def test(message):
+    try:
+        bot.forward_message(
+            chat_id=CHANNEL_ID,
+            from_chat_id=message.chat.id,
+            message_id=message.message_id
+        )
+        bot.reply_to(message, "Reenvío OK")
+    except Exception as e:
+        bot.reply_to(message, f"ERROR: {e}")
 # ========== INICIO ==========
 def start_bot():
     print("🤖 Bot iniciando en Render FREE...")
