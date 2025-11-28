@@ -21,6 +21,10 @@ def home():
 def start_web():
     app.run(host="0.0.0.0", port=10000)
 
+@app.get("/ping")
+def ping():
+    return "pong", 200
+
 # ========== FUNCION DE REENVÍO ==========
 def safe_forward(message: types.Message):
     try:
